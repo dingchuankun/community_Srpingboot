@@ -15,4 +15,4 @@
 ##项目开始  
 #####1.github登陆  
 登陆流程：   
- ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
+ ![image](https://github.com/dingchuankun/community_Srpingboot/blob/master/github%E7%99%BB%E9%99%86.jpg)
