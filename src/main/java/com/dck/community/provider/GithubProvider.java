@@ -29,6 +29,7 @@ public class GithubProvider {
                 return null;
             }
         }
+//    用户信息接口https://api.github.com/user?access_token=14e7a0782f416f606279b108c9da6aabe4ccb82d
         public GithubUser getUser(String accessToken){
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
