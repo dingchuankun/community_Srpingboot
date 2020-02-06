@@ -46,28 +46,30 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
             <hr>
-            <form action="">
+            <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="问题标题...">
+                    <input type="text"  class="form-control" id="title" name="title" placeholder="问题标题..."/>
                 </div>
                 <div class="form-group">
                     <label for="description">问题补充（必填）</label>
-                    <textarea type="text" class="form-control" id="description" name="description"  placeholder="问题标题..." cols="30" rows="10">
-               </textarea>
+                    <textarea type="text" class="form-control" id="description" name="description"  placeholder="问题标题..." cols="30" rows="10"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="tag">增加标签：</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签以逗号分隔">
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签以逗号分隔"/>
                 </div>
+                <span class="alert" th:text="${error}"></span>
                 <button class="btn btn-success btn-publish" type="submit">发布</button>
             </form>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h3>问题发起指南</h3>
-            1.问题标题：请用精简的语言描述您发布的问题，不超过25字<br>
-            2.问题补充：详细描述您的问题<br>
-            3.选择标签：选择一个或多个标签，用逗号隔开，标签不超过1字<br>
+            <ul class="">
+                <li>问题标题：请用精简的语言描述您发布的问题，不超过25字</li>
+                <li>问题补充：详细描述您的问题</li>
+                <li>选择标签：选择一个或多个标签，用逗号隔开，标签不超过1字</li>
+            </ul>
         </div>
     </div>
 </div>
