@@ -49,17 +49,17 @@
             <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）</label>
-                    <input type="text"  class="form-control" id="title" name="title" placeholder="问题标题..."/>
+                    <input type="text"  class="form-control" id="title" name="title" placeholder="问题标题..." th:value="${question.title}"/>
                 </div>
                 <div class="form-group">
                     <label for="description">问题补充（必填）</label>
-                    <textarea type="text" class="form-control" id="description" name="description"  placeholder="问题标题..." cols="30" rows="10"></textarea>
+                    <textarea type="text" class="form-control" id="description" name="description"  placeholder="问题描述..." cols="30" rows="10" th:text="${question.description}"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="tag">增加标签：</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签以逗号分隔"/>
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签以逗号分隔" th:value="${question.tag}"/>
                 </div>
-                <span class="alert" th:text="${error}"></span>
+                <span class="alert alert-warning" th:text="${error}"></span>
                 <button class="btn btn-success btn-publish" type="submit">发布</button>
             </form>
         </div>

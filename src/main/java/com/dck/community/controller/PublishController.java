@@ -22,16 +22,19 @@ public class PublishController {
     private UserMapper userMapper;
 
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+        Question question=new Question();
+        model.addAttribute("question",question);
         return "publish";
     }
+
     @PostMapping("/publish")
     public String dopublish(Question question, HttpServletRequest request, Model model){
         Cookie[] cookies = request.getCookies();
         User user = null;
         if (question != null){
             model.addAttribute("question",question);
-            System.out.println(question);
+            System.out.println("model里的"+question);
         }
         if(question.getTitle()==null||question.getTitle()==""){
             model.addAttribute("error","标题不能为空");
@@ -45,7 +48,7 @@ public class PublishController {
             model.addAttribute("error","标签不能为空");
             return "publish";
         }
-
+        if(cookies != null && cookies.length !=0){
         for(Cookie cookie:cookies ){
             if (cookie.getName().equals("token")) {
                 String token=cookie.getValue();
@@ -55,6 +58,7 @@ public class PublishController {
                 }
                 break;
             }
+        }
         }
         if (user == null) {
             model.addAttribute("error","用户未登录");

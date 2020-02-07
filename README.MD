@@ -11,6 +11,7 @@
 [SpringBoot官方文档](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/)
 ## 工具
 [Git](https://git-scm.com/ )  
+[lomlok](https://projectlombok.org/)  
 [Visual Paradigm](https://www.visual-paradigm.com/cn/download/community.jsp)
 ## 技术相关
 前端Bootstrap：https://www.bootcss.com/
