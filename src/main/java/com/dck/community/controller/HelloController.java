@@ -1,5 +1,6 @@
 package com.dck.community.controller;
 
+import com.dck.community.dto.PageDTO;
 import com.dck.community.dto.QuestionDTO;
 import com.dck.community.mapper.QuestionMapper;
 import com.dck.community.mapper.UserMapper;
@@ -28,7 +29,9 @@ public class HelloController {
 //  显示主页
     @GetMapping("/")
     public String index(HttpServletRequest request
-                        ,Model model) {
+                        ,Model model,
+                        @RequestParam(name = "page",defaultValue = "1") Integer page,
+                        @RequestParam(name = "page",defaultValue = "5") Integer size) {
         Cookie[] cookies = request.getCookies();
         if(cookies != null && cookies.length !=0){
         for (Cookie cookie : cookies) {
@@ -43,7 +46,8 @@ public class HelloController {
 
             }
         }
-        List<QuestionDTO> questionList=questionService.questionlist();
+        PageDTO questionList=questionService.questionlist(page,size);
+
         model.addAttribute("questions",questionList);
         System.out.println("测试："+questionList);
         return "index";

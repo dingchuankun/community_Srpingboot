@@ -1,5 +1,6 @@
 package com.dck.community.service;
 
+import com.dck.community.dto.PageDTO;
 import com.dck.community.dto.QuestionDTO;
 import com.dck.community.mapper.QuestionMapper;
 import com.dck.community.mapper.UserMapper;
@@ -19,9 +20,11 @@ public class QuestionService {
     @Autowired
     private QuestionMapper questionMapper;
 
-    public List<QuestionDTO> questionlist() {
-        List<Question> questionList=questionMapper.questionlist();
+    public PageDTO questionlist(Integer page, Integer size) {
+        page=size*(page-1);
+        List<Question> questionList=questionMapper.questionlist(page,size);
         List<QuestionDTO> questionListDTOlist=new ArrayList<>();
+        PageDTO pageDTO=new PageDTO();
         for (Question question : questionList) {
             User user = userMapper.findById(question.getCreator());
       //      System.out.println("user测试"+user);
@@ -31,6 +34,9 @@ public class QuestionService {
             questionListDTOlist.add(questionDTO);
 
         }
-        return questionListDTOlist;
+        pageDTO.setQuestions(questionListDTOlist);
+        Integer totalCount = questionMapper.count();
+        pageDTO.setPagination(totalCount,page,size);
+        return pageDTO;
     }
 }

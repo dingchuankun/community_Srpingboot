@@ -63,6 +63,9 @@ public class PublishController {
             model.addAttribute("error","用户未登录");
             return "publish";
         }
+        question.setCommentCount(0);
+        question.setViewCount(0);
+        question.setLikeCount(0);
         question.setCreator(user.getId());
         question.setGmtCreate(System.currentTimeMillis());
         question.setGmtModified(question.getGmtCreate());
